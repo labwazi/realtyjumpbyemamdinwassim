@@ -1,77 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Realty Jump PRO - BY EMAMDIN WASSIM</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realty Jump Mobile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
     body { margin:0; overflow:hidden; font-family:Arial; }
     canvas { display:block; margin:auto; background:linear-gradient(#6ec6ff,#fff); }
 
-    .panel {
+    #ui {
       position:absolute;
-      top:10px;
-      left:10px;
+      top:5px;
+      left:5px;
       background:rgba(0,0,0,0.6);
       color:white;
-      padding:10px;
+      padding:8px;
       border-radius:10px;
       font-size:12px;
     }
 
-    #menu, #win {
+    #controls {
+      position:absolute;
+      bottom:0;
+      width:100%;
+      display:flex;
+    }
+
+    .btn {
+      flex:1;
+      padding:20px;
+      text-align:center;
+      font-size:20px;
+      background:#333;
+      color:white;
+    }
+
+    #menu {
       position:absolute;
       width:100%;
-      top:35%;
+      top:40%;
       text-align:center;
     }
 
     button {
-      margin:5px;
-      padding:8px 12px;
-      border:none;
-      border-radius:6px;
-      background:#27ae60;
-      color:white;
+      padding:15px;
+      font-size:18px;
     }
   </style>
 </head>
 <body>
 
 <div id="menu">
-  <h1>🏠 Realty Jump FINAL BOSS</h1>
-  <p>Emamdin Wassim Realty</p>
-  <button onclick="start()">Start Game</button>
+  <h1>🏠 Realty Jump Mobile</h1>
+  <button onclick="start()">Start</button>
 </div>
 
-<div id="win" style="display:none;">
-  <h1>👑 YOU BUILT A REAL ESTATE EMPIRE!</h1>
-  <button onclick="location.reload()">Restart</button>
-</div>
-
-<div class="panel" id="ui"></div>
+<div id="ui"></div>
 
 <canvas id="c" width="400" height="600"></canvas>
 
+<div id="controls">
+  <div class="btn" ontouchstart="moveLeft=true" ontouchend="moveLeft=false">⬅️</div>
+  <div class="btn" ontouchstart="moveRight=true" ontouchend="moveRight=false">➡️</div>
+</div>
+
 <script>
-const c = document.getElementById("c");
-const ctx = c.getContext("2d");
+const c=document.getElementById("c");
+const ctx=c.getContext("2d");
 
-let player, plats, obs, power;
-let score, money, income, started=false, gameOver=false;
-let upgrades, ownedProps, mission;
-
-// Load save
-let save = JSON.parse(localStorage.getItem("realtySave")||"{}");
+let player,plats,obs;
+let score=0,money=0,income=1;
+let moveLeft=false,moveRight=false;
+let started=false,gameOver=false;
 
 function init(){
   player={x:180,y:500,w:40,h:40,dy:-12};
-  plats=[]; obs=[]; power=[];
-  score=0;
-  money=save.money||0;
-  income=save.income||1;
-  upgrades=save.upgrades||{jump:0,income:0};
-  ownedProps=save.props||0;
-  mission=save.mission||"Reach 200 height";
+  plats=[]; obs=[];
+  score=0; money=0;
 
   for(let i=0;i<10;i++){
     plats.push({x:Math.random()*320,y:i*60});
@@ -84,52 +88,42 @@ function start(){
   started=true;
 }
 
-// Controls
-let keys={};
-document.addEventListener("keydown",e=>keys[e.key]=true);
-document.addEventListener("keyup",e=>keys[e.key]=false);
-
 function update(){
-  if(!started || gameOver) return;
+  if(!started||gameOver)return;
 
-  // Move
-  if(keys["ArrowLeft"]) player.x-=5;
-  if(keys["ArrowRight"]) player.x+=5;
+  // MOBILE movement
+  if(moveLeft) player.x-=5;
+  if(moveRight) player.x+=5;
 
-  // Wrap
+  // wrap
   if(player.x<0) player.x=360;
   if(player.x>360) player.x=0;
 
-  // Gravity
+  // gravity
   player.dy+=0.35;
   player.y+=player.dy;
 
-  // Platform bounce
+  // bounce
   if(player.dy>0){
     plats.forEach(p=>{
       if(player.x<p.x+70 && player.x+40>p.x &&
          player.y+40<p.y+10 &&
          player.y+40+player.dy>=p.y){
-        player.dy = -10 - upgrades.jump;
+        player.dy=-11;
       }
     });
   }
 
-  // Scroll
+  // scroll
   if(player.y<280){
-    let speed=4+score/200;
-    plats.forEach(p=>p.y+=speed);
-    obs.forEach(o=>o.y+=speed);
-    power.forEach(p=>p.y+=speed);
-
+    plats.forEach(p=>p.y+=4);
+    obs.forEach(o=>o.y+=4);
     player.y=280;
     score++;
-
-    // Passive income
-    money += income;
+    money+=income;
   }
 
-  // Respawn platforms
+  // respawn
   plats.forEach(p=>{
     if(p.y>600){
       p.y=-10;
@@ -137,19 +131,13 @@ function update(){
     }
   });
 
-  // Obstacles scale
-  if(Math.random()<0.01 + score/50000){
+  // obstacles
+  if(Math.random()<0.015){
     obs.push({x:Math.random()*380,y:-20});
   }
-  obs.forEach(o=>o.y+=2+score/400);
+  obs.forEach(o=>o.y+=3);
 
-  // Powerups
-  if(Math.random()<0.02){
-    power.push({x:Math.random()*380,y:-20,type:Math.random()});
-  }
-  power.forEach(p=>p.y+=3);
-
-  // Collisions
+  // hit
   obs.forEach(o=>{
     if(player.x<o.x+20 && player.x+40>o.x &&
        player.y<o.y+20 && player.y+40>o.y){
@@ -157,105 +145,32 @@ function update(){
     }
   });
 
-  power.forEach(p=>{
-    if(player.x<p.x+20 && player.x+40>p.x &&
-       player.y<p.y+20 && player.y+40>p.y){
-      if(p.type<0.5) player.dy=-18;
-      else money+=500;
-    }
-  });
-
-  // Missions
-  if(score>200 && mission==="Reach 200 height"){
-    mission="Own 3 properties";
-    money+=1000;
-  }
-
-  if(ownedProps>=3 && mission==="Own 3 properties"){
-    mission="Reach 600 (Palace)";
-    money+=2000;
-  }
-
-  // Win
-  if(score>600){
-    document.getElementById("win").style.display="block";
-    gameOver=true;
-  }
-
-  // Save
-  localStorage.setItem("realtySave",JSON.stringify({
-    money, income, upgrades, props:ownedProps, mission
-  }));
+  if(player.y>600) gameOver=true;
 
   updateUI();
 }
 
-// BUY SYSTEM
-function buyProperty(){
-  if(money>=500){
-    money-=500;
-    income+=2;
-    ownedProps++;
-  }
-}
-
-function upgradeJump(){
-  if(money>=300){
-    money-=300;
-    upgrades.jump++;
-  }
-}
-
-function upgradeIncome(){
-  if(money>=400){
-    money-=400;
-    income+=1;
-  }
-}
-
-// UI
 function updateUI(){
-  document.getElementById("ui").innerHTML = `
-  🏆 Height: ${score}<br>
-  💰 Money: $${money}<br>
-  📈 Income: $${income}/tick<br>
-  🏠 Properties: ${ownedProps}<br>
-  🎯 Mission: ${mission}<br><br>
-
-  <button onclick="buyProperty()">Buy Property ($500)</button><br>
-  <button onclick="upgradeJump()">Upgrade Jump ($300)</button><br>
-  <button onclick="upgradeIncome()">Upgrade Income ($400)</button>
-  `;
+  document.getElementById("ui").innerHTML=
+    "🏆 "+score+"<br>💰 $"+money;
 }
 
-// Draw
 function draw(){
   ctx.clearRect(0,0,400,600);
 
   if(!started) return;
 
-  // Platforms
   ctx.fillStyle="green";
   plats.forEach(p=>{
     ctx.fillRect(p.x,p.y,60,10);
   });
 
-  // Player
   ctx.fillStyle="orange";
   ctx.fillRect(player.x,player.y,40,40);
 
-  // Obstacles
   ctx.fillStyle="red";
   obs.forEach(o=>{
     ctx.fillRect(o.x,o.y,20,20);
-  });
-
-  // Powerups
-  ctx.fillStyle="gold";
-  power.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,10,0,Math.PI*2);
-    ctx.fill();
   });
 
   if(gameOver){
