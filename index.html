@@ -1,1295 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 Frères Car Wash | Premium Car Cleaning in Port Louis</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1a6dca;
-            --primary-dark: #0d5cb6;
-            --secondary: #ffd700;
-            --accent: #2DD4BF;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --success: #10b981;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary);
-            color: var(--dark);
-        }
-
-        .btn-secondary:hover {
-            background-color: #e6c200;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-title h2:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo h1 {
-            font-size: 24px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-icon {
-            font-size: 28px;
-            margin-right: 10px;
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 16px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(26, 109, 202, 0.8), rgba(26, 109, 202, 0.9)), url('https://images.unsplash.com/photo-1566936737687-8f392a237b8b?ixlib=rb-4.0.3') no-repeat center center/cover;
-            color: white;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 650px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .hero-image {
-            position: absolute;
-            right: 5%;
-            bottom: 0;
-            width: 45%;
-            max-width: 600px;
-            z-index: 1;
-        }
-
-        /* About Section */
-        .about {
-            background-color: white;
-        }
-
-        .about-content {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-            border-radius: 10px;
-        }
-
-        .about-image img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Features Section */
-        .features {
-            background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        /* Shine Philosophy Section */
-        .philosophy {
-            background: linear-gradient(135deg, #0c2461, #1e3799);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .philosophy::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3') no-repeat center center/cover;
-            opacity: 0.15;
-            z-index: 1;
-        }
-
-        .philosophy-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .quote-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .quote-text {
-            font-size: 28px;
-            font-style: italic;
-            margin-bottom: 30px;
-            line-height: 1.4;
-            position: relative;
-        }
-
-        .quote-text::before, .quote-text::after {
-            content: '"';
-            font-size: 60px;
-            position: absolute;
-            opacity: 0.3;
-        }
-
-        .quote-text::before {
-            top: -20px;
-            left: -20px;
-        }
-
-        .quote-text::after {
-            bottom: -40px;
-            right: -20px;
-        }
-
-        .quote-author {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 20px;
-            color: var(--secondary);
-        }
-
-        .new-quote-btn {
-            margin-top: 30px;
-            background: var(--secondary);
-            color: var(--dark);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .new-quote-btn:hover {
-            background: #e6c200;
-            transform: translateY(-3px);
-        }
-
-        /* Pricing Section */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .price-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .price-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .price-header {
-            background: var(--primary);
-            color: white;
-            padding: 25px 15px;
-        }
-
-        .price-header h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .price-amount {
-            font-size: 36px;
-            font-weight: 700;
-            margin-top: 10px;
-        }
-
-        .price-body {
-            padding: 25px 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .price-footer {
-            margin-top: auto;
-        }
-
-        /* Spin to Win Section */
-        .spin-section {
-            background: linear-gradient(to right, #1a6dca, #2DD4BF);
-            color: white;
-            text-align: center;
-        }
-
-        .wheel-container {
-            position: relative;
-            width: 320px;
-            height: 320px;
-            margin: 0 auto 40px;
-        }
-
-        .wheel {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(
-                #ff6b6b 0deg 120deg,
-                #4ecdc4 120deg 240deg,
-                #ffd166 240deg 360deg
-            );
-            position: relative;
-            transition: transform 4s cubic-bezier(0.17, 0.67, 0.22, 0.99);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .wheel-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-weight: bold;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-        }
-
-        .wheel-center:before {
-            content: '';
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-bottom: 25px solid var(--secondary);
-        }
-
-        .wheel-label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 110px;
-            text-align: center;
-            transform: translate(-50%, -50%) rotate(calc(var(--i) * 120deg)) translateY(-135px);
-            font-weight: bold;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            font-size: 18px;
-        }
-
-        .spin-result {
-            background: white;
-            color: var(--dark);
-            padding: 25px;
-            border-radius: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-            box-shadow: var(--shadow);
-            display: none;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            font-size: 24px;
-            color: var(--primary);
-            min-width: 40px;
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .hours-item {
-            background: #f1f5f9;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            font-size: 20px;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-5px);
-        }
-
-        .social-icon.tiktok {
-            background: #000;
-            position: relative;
-        }
-
-        .social-icon.tiktok:before {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #25F4EE, #000000 35%, #FE2C55 70%, #000000);
-            border-radius: 8px;
-        }
-
-        .social-icon.tiktok i {
-            position: relative;
-            z-index: 1;
-        }
-
-        .map {
-            height: 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: #eee;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 40px;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .quote-text {
-                font-size: 22px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-                transition: 0.5s;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .hero {
-                text-align: center;
-            }
-            
-            .hero-content {
-                margin: 0 auto;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            .quote-text {
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .section {
-                padding: 60px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 30px;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .wheel-container {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .quote-text {
-                font-size: 18px;
-            }
-        }
-    </style>
+  <title>Realty Jump PRO - FINAL BOSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin:0; overflow:hidden; font-family:Arial; }
+    canvas { display:block; margin:auto; background:linear-gradient(#6ec6ff,#fff); }
+
+    .panel {
+      position:absolute;
+      top:10px;
+      left:10px;
+      background:rgba(0,0,0,0.6);
+      color:white;
+      padding:10px;
+      border-radius:10px;
+      font-size:12px;
+    }
+
+    #menu, #win {
+      position:absolute;
+      width:100%;
+      top:35%;
+      text-align:center;
+    }
+
+    button {
+      margin:5px;
+      padding:8px 12px;
+      border:none;
+      border-radius:6px;
+      background:#27ae60;
+      color:white;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-car"></i></div>
-                <h1>3 Frères Car Wash</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Why Choose Us</a></li>
-                <li><a href="#philosophy">Shine Philosophy</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#spin">Spin & Win</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Welcome to 3 Frères Car Wash 🚘</h1>
-                <p>We specialize in giving your vehicle the shine it deserves. Join us for a sparkling clean experience that you and your car will love!</p>
-                <div class="hero-buttons">
-                    <a href="#spin" class="btn btn-secondary">Spin to Win Discount</a>
-                    <a href="https://wa.me/23059151348" class="btn btn-whatsapp">Book Now on WhatsApp</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/far1.jpg" alt="Car Wash">
-            </div>
-        </div>
-    </section>
+<div id="menu">
+  <h1>🏠 Realty Jump FINAL BOSS</h1>
+  <p>Emamdin Wassim Realty</p>
+  <button onclick="start()">Start Game</button>
+</div>
 
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>YOUR LOCAL CAR WASH EXPERTS</h3>
-                    <p>Welcome to 3 Frères Car Wash—where we're crazy about cleanliness and serious about shine!</p>
-                    <p>Each car gets the royal treatment because we're obsessed with details. 3 Frères Car Wash delivers superior washes performed by a caring team of people who appreciate the value of your time.</p>
-                    <p>To offer this level of consistent service, each of our car wash professionals is committed to ongoing training. Our commitment to continual learning ensures that 3 Frères Car Wash customers enjoy best-of-industry standards and practices.</p>
-                    <p>If this sounds like the level of care and service that you'd like to experience at your car wash, then visit today and join the 3 Frères Car Wash family!</p>
-                    <p>Managed by 3 brothers at 34 Vellore Street, Port Louis.</p>
-                </div>
-                <div class="about-image">
-                    <img src="images/far2.jpg" alt="Car Wash Team">
-                    <img src="images/far3.jpg" alt="Car Wash Process">
-                </div>
-            </div>
-        </div>
-    </section>
+<div id="win" style="display:none;">
+  <h1>👑 YOU BUILT A REAL ESTATE EMPIRE!</h1>
+  <button onclick="location.reload()">Restart</button>
+</div>
 
-    <!-- Features Section -->
-    <section class="section features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Us</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>Royal Treatment</h3>
-                    <p>Each car gets VIP care - we treat your vehicle like royalty with meticulous attention to every detail.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Safety First</h3>
-                    <p>Your car's protection is our priority. We care for your car and you can trust us to handle it with utmost care.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <h3>Premium Products</h3>
-                    <p>We test every product before use. Only genuine, industry-approved products touch your vehicle - no compromises.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="panel" id="ui"></div>
 
-    <!-- Shine Philosophy Section -->
-    <section class="section philosophy" id="philosophy">
-        <div class="container philosophy-content">
-            <div class="section-title">
-                <h2>Shine Philosophy</h2>
-            </div>
-            <div class="quote-box">
-                <p class="quote-text" id="quote-text">A clean car is a happy car. Treat your vehicle to the care it deserves and it will take you places with pride.</p>
-                <p class="quote-author" id="quote-author">- 3 Frères Car Wash</p>
-                <button class="new-quote-btn" id="new-quote">New Inspiration</button>
-            </div>
-        </div>
-    </section>
+<canvas id="c" width="400" height="600"></canvas>
 
-    <!-- Pricing Section -->
-    <section class="section pricing" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Best Prices</h2>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Car</h3>
-                        <div class="price-amount">400 MUR</div>
-                    </div>
-                    <div class="price-body">
-                        <div class="price-footer">
-                            <a href="https://wa.me/23059151348?text=Hi%203%20Frères%20Car%20Wash!%20I%20would%20like%20to%20book%20a%20car%20wash%20for%20my%20car." class="btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>SUV</h3>
-                        <div class="price-amount">500 MUR</div>
-                    </div>
-                    <div class="price-body">
-                        <div class="price-footer">
-                            <a href="https://wa.me/23059151348?text=Hi%203%20Frères%20Car%20Wash!%20I%20would%20like%20to%20book%20a%20car%20wash%20for%20my%20SUV." class="btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Van</h3>
-                        <div class="price-amount">600 MUR</div>
-                    </div>
-                    <div class="price-body">
-                        <div class="price-footer">
-                            <a href="https://wa.me/23059151348?text=Hi%203%20Frères%20Car%20Wash!%20I%20would%20like%20to%20book%20a%20car%20wash%20for%20my%20van." class="btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>Lorry</h3>
-                        <div class="price-amount">900 MUR</div>
-                    </div>
-                    <div class="price-body">
-                        <div class="price-footer">
-                            <a href="https://wa.me/23059151348?text=Hi%203%20Frères%20Car%20Wash!%20I%20would%20like%20to%20book%20a%20car%20wash%20for%20my%20lorry." class="btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+const c = document.getElementById("c");
+const ctx = c.getContext("2d");
 
-    <!-- Spin to Win Section -->
-    <section class="section spin-section" id="spin">
-        <div class="container">
-            <div class="section-title">
-                <h2>Spin to Win Discount</h2>
-            </div>
-            <p style="margin-bottom: 30px; font-size: 18px;">Spin the wheel for a chance to win exclusive discounts on your next car wash!</p>
-            
-            <div class="wheel-container">
-                <div class="wheel" id="wheel">
-                    <div class="wheel-label" style="--i:0.5">5% OFF</div>
-                    <div class="wheel-label" style="--i:1.5">10% OFF</div>
-                    <div class="wheel-label" style="--i:2.5">TRY AGAIN</div>
-                </div>
-                <div class="wheel-center" id="spin-btn">
-                    SPIN
-                </div>
-            </div>
-            
-            <div class="spin-result" id="result">
-                <h3 id="result-title">Congratulations!</h3>
-                <p id="result-text">You've won a 10% discount on your next car wash!</p>
-                <p id="result-instructions">Show this message at our location to claim your discount.</p>
-                <a href="https://wa.me/23059151348" class="btn btn-whatsapp" id="whatsapp-btn">Book Now on WhatsApp</a>
-            </div>
-            
-            <div style="margin-top: 30px;">
-                <p><i class="fas fa-info-circle"></i> You can spin once every 24 hours. Each win gives you one discount to claim on your next visit.</p>
-            </div>
-        </div>
-    </section>
+let player, plats, obs, power;
+let score, money, income, started=false, gameOver=false;
+let upgrades, ownedProps, mission;
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Address</h3>
-                            <p>34 Vellore Street, Port Louis, Mauritius</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h3>Opening Hours</h3>
-                            <div class="hours-grid">
-                                <div class="hours-item">
-                                    <strong>Mon - Sat</strong>
-                                    <p>9:00 AM - 5:30 PM</p>
-                                </div>
-                                <div class="hours-item">
-                                    <strong>Sunday & Holidays</strong>
-                                    <p>9:00 AM - 1:30 PM</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div>
-                            <h3>WhatsApp</h3>
-                            <p>+230 5915 1348</p>
-                            <a href="https://wa.me/23059151348" class="btn" style="margin-top: 10px;">Chat Now</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Follow Us</h3>
-                            <div class="social-links">
-                                <a href="https://www.facebook.com/profile.php?id=61572230005753" class="social-icon" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="social-icon tiktok">
-                                    <i class="fab fa-tiktok"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14965.054046133288!2d57.504327!3d-20.166015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x217c5041a7d9f1d9%3A0xf0c1b1b5c0d5b5b5!2sPort%20Louis%2C%20Mauritius!5e0!3m2!1sen!2sus!4v1683200000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+// Load save
+let save = JSON.parse(localStorage.getItem("realtySave")||"{}");
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <div class="footer-logo">3 Frères Car Wash</div>
-                    <p>Your local car wash experts in Port Louis, providing premium cleaning services with a personal touch.</p>
-                </div>
-                
-                <div>
-                    <h3>Quick Links</h3>
-                    <ul style="list-style: none; margin-top: 15px;">
-                        <li style="margin-bottom: 10px;"><a href="#home" style="color: #94a3b8; text-decoration: none;">Home</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#about" style="color: #94a3b8; text-decoration: none;">About Us</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#philosophy" style="color: #94a3b8; text-decoration: none;">Shine Philosophy</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#pricing" style="color: #94a3b8; text-decoration: none;">Pricing</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#contact" style="color: #94a3b8; text-decoration: none;">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3>Newsletter</h3>
-                    <p style="margin: 15px 0;">Get exclusive first access to the best discounts and promotions!</p>
-                    <form>
-                        <input type="email" placeholder="Your Email" style="padding: 12px; width: 100%; border: none; border-radius: 5px; margin-bottom: 10px;">
-                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 3 Frères Car Wash. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+function init(){
+  player={x:180,y:500,w:40,h:40,dy:-12};
+  plats=[]; obs=[]; power=[];
+  score=0;
+  money=save.money||0;
+  income=save.income||1;
+  upgrades=save.upgrades||{jump:0,income:0};
+  ownedProps=save.props||0;
+  mission=save.mission||"Reach 200 height";
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/23059151348" class="whatsapp-btn">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+  for(let i=0;i<10;i++){
+    plats.push({x:Math.random()*320,y:i*60});
+  }
+}
 
-    <script>
-        // Mobile Navigation Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Spin to Win Functionality
-        const wheel = document.getElementById('wheel');
-        const spinBtn = document.getElementById('spin-btn');
-        const result = document.getElementById('result');
-        const resultTitle = document.getElementById('result-title');
-        const resultText = document.getElementById('result-text');
-        const resultInstructions = document.getElementById('result-instructions');
-        const whatsappBtn = document.getElementById('whatsapp-btn');
-        
-        // Check if user has spun today
-        function hasSpunToday() {
-            const lastSpin = localStorage.getItem('lastSpin');
-            if (!lastSpin) return false;
-            
-            const today = new Date().toDateString();
-            return lastSpin === today;
-        }
-        
-        // Set last spin date
-        function setLastSpin() {
-            const today = new Date().toDateString();
-            localStorage.setItem('lastSpin', today);
-        }
-        
-        // Spin the wheel
-        spinBtn.addEventListener('click', () => {
-            if (hasSpunToday()) {
-                alert("You've already spun today. Come back tomorrow for another chance!");
-                return;
-            }
-            
-            // Disable button during spin
-            spinBtn.style.pointerEvents = 'none';
-            
-            // Generate random spin result (0, 1, or 2)
-            const resultIndex = Math.floor(Math.random() * 3);
-            
-            // Calculate rotation (each segment is 120deg, add 5 full rotations)
-            const baseRotation = 1800; // 5 full rotations
-            const segmentRotation = resultIndex * 120;
-            const randomOffset = Math.floor(Math.random() * 40) - 20; // -20 to 20 degrees variation
-            const totalRotation = baseRotation + segmentRotation + randomOffset;
-            
-            // Apply rotation
-            wheel.style.transform = `rotate(${totalRotation}deg)`;
-            
-            // After spin animation
-            setTimeout(() => {
-                // Enable button
-                spinBtn.style.pointerEvents = 'auto';
-                
-                // Show result
-                let discount = 0;
-                let message = "";
-                
-                switch(resultIndex) {
-                    case 0: // 5% discount
-                        discount = 5;
-                        message = `You've won a ${discount}% discount on your next car wash!`;
-                        break;
-                    case 1: // 10% discount
-                        discount = 10;
-                        message = `Congratulations! You've won a ${discount}% discount on your next car wash!`;
-                        break;
-                    case 2: // Try again
-                        message = "No luck this time, but come back tomorrow for another spin!";
-                        break;
-                }
-                
-                // Update result display
-                if (resultIndex === 2) {
-                    resultTitle.textContent = "Try Again Tomorrow";
-                    resultTitle.style.color = "#ff6b6b";
-                } else {
-                    resultTitle.textContent = "Congratulations!";
-                    resultTitle.style.color = "#10b981";
-                }
-                
-                resultText.textContent = message;
-                
-                if (resultIndex !== 2) {
-                    resultInstructions.textContent = `Show this message at our location to claim your ${discount}% discount.`;
-                    whatsappBtn.textContent = `Book with ${discount}% Discount`;
-                    // Pre-fill WhatsApp message
-                    whatsappBtn.href = `https://wa.me/23059151348?text=Hi%203%20Frères%20Car%20Wash!%20I%20just%20won%20a%20${discount}%25%20discount.%20Can%20I%20check%20availability%20for%20a%20wash%3F`;
-                } else {
-                    resultInstructions.textContent = "";
-                    whatsappBtn.textContent = "Book Now on WhatsApp";
-                    whatsappBtn.href = "https://wa.me/23059151348";
-                }
-                
-                result.style.display = "block";
-                
-                // Save spin
-                setLastSpin();
-                
-                // Save discount if won
-                if (discount > 0) {
-                    // Save to localStorage
-                    const discounts = JSON.parse(localStorage.getItem('discounts') || '[]');
-                    discounts.push(discount);
-                    localStorage.setItem('discounts', JSON.stringify(discounts));
-                }
-                
-            }, 4000);
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-        
-        // Shine Philosophy Quotes
-        const quotes = [
-            {text: "A clean car is a happy car. Treat your vehicle to the care it deserves and it will take you places with pride.", author: "3 Frères Car Wash"},
-            {text: "Your car is a reflection of you. Keep it shining and it will reflect the best version of yourself.", author: "3 Frères Car Wash"},
-            {text: "The road to success is paved with clean windshields and spotless hoods.", author: "3 Frères Car Wash"},
-            {text: "A clean car doesn't just look good, it feels good. It's therapy on wheels.", author: "3 Frères Car Wash"},
-            {text: "Dirt is temporary, but a perfect shine is a state of mind.", author: "3 Frères Car Wash"},
-            {text: "The shine on your car is the sparkle in your eye when you turn back to look at it.", author: "3 Frères Car Wash"},
-            {text: "A well-maintained car is a loyal companion. Treat it with respect and it will never let you down.", author: "3 Frères Car Wash"},
-            {text: "Cleanliness is not next to godliness—it's next to automotive perfection.", author: "3 Frères Car Wash"},
-            {text: "Your car's shine is its smile. Make sure it always has something to smile about.", author: "3 Frères Car Wash"},
-            {text: "A spotless car isn't a luxury, it's a statement of self-respect.", author: "3 Frères Car Wash"},
-            {text: "The first wash is for the car, the second is for the soul.", author: "3 Frères Car Wash"},
-            {text: "A clean car drives better. It's science, but it feels like magic.", author: "3 Frères Car Wash"},
-            {text: "Dirt hides beauty. Our job is to reveal the masterpiece beneath.", author: "3 Frères Car Wash"},
-            {text: "Every car has a story. A clean car tells a story of pride and care.", author: "3 Frères Car Wash"},
-            {text: "Shine isn't just about reflection—it's about perfection in every curve and contour.", author: "3 Frères Car Wash"},
-            {text: "A clean car is like a deep breath of fresh air—refreshing and revitalizing.", author: "3 Frères Car Wash"},
-            {text: "Your car deserves to shine as bright as your dreams.", author: "3 Frères Car Wash"},
-            {text: "The difference between ordinary and extraordinary is in the details—and the shine.", author: "3 Frères Car Wash"},
-            {text: "A car wash isn't a chore—it's an act of love for your most faithful companion.", author: "3 Frères Car Wash"},
-            {text: "The shine we create today is the pride you'll feel tomorrow.", author: "3 Frères Car Wash"},
-            {text: "Cleanliness is the signature of excellence in automotive care.", author: "3 Frères Car Wash"},
-            {text: "A spotless car is the ultimate accessory for a confident driver.", author: "3 Frères Car Wash"},
-            {text: "Your car's shine is the first impression you make on the road. Make it count.", author: "3 Frères Car Wash"},
-            {text: "The road to happiness is paved with clean cars and clear windshields.", author: "3 Frères Car Wash"},
-            {text: "A clean car doesn't just turn heads—it commands respect.", author: "3 Frères Car Wash"},
-            {text: "The shine on your car is the light that guides your journey.", author: "3 Frères Car Wash"},
-            {text: "Perfection is not a destination—it's a shine that follows you wherever you go.", author: "3 Frères Car Wash"},
-            {text: "Your car's appearance speaks before you do. Let it tell a story of excellence.", author: "3 Frères Car Wash"},
-            {text: "A clean car is a moving work of art. We're the artists.", author: "3 Frères Car Wash"},
-            {text: "Shine bright like your car on a sunny day—effortless and brilliant.", author: "3 Frères Car Wash"},
-            {text: "The difference between a car and a masterpiece is the quality of its shine.", author: "3 Frères Car Wash"},
-            {text: "Your car deserves to look as good as it performs.", author: "3 Frères Car Wash"},
-            {text: "A clean car is a confident car. Drive with pride.", author: "3 Frères Car Wash"},
-            {text: "The shine we create isn't just surface deep—it's soul deep.", author: "3 Frères Car Wash"},
-            {text: "Every wash is a renewal, every shine a rebirth of automotive beauty.", author: "3 Frères Car Wash"},
-            {text: "A spotless car is the ultimate expression of self-care on wheels.", author: "3 Frères Car Wash"},
-            {text: "Your car's shine is the spark that ignites your driving passion.", author: "3 Frères Car Wash"},
-            {text: "Cleanliness is the canvas, shine is the masterpiece.", author: "3 Frères Car Wash"},
-            {text: "A well-cared-for car is a trusted friend for life's journeys.", author: "3 Frères Car Wash"},
-            {text: "The shine on your car is the light that brightens your day.", author: "3 Frères Car Wash"},
-            {text: "Perfection in automotive care is measured in reflections.", author: "3 Frères Car Wash"}
-        ];
-        
-        const quoteText = document.getElementById('quote-text');
-        const quoteAuthor = document.getElementById('quote-author');
-        const newQuoteBtn = document.getElementById('new-quote');
-        
-        function getRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            return quotes[randomIndex];
-        }
-        
-        function displayNewQuote() {
-            const quote = getRandomQuote();
-            quoteText.textContent = quote.text;
-            quoteAuthor.textContent = `- ${quote.author}`;
-            
-            // Add animation
-            quoteText.style.opacity = 0;
-            quoteAuthor.style.opacity = 0;
-            
-            setTimeout(() => {
-                quoteText.style.transition = 'opacity 0.5s ease';
-                quoteAuthor.style.transition = 'opacity 0.5s ease';
-                quoteText.style.opacity = 1;
-                quoteAuthor.style.opacity = 1;
-            }, 10);
-        }
-        
-        newQuoteBtn.addEventListener('click', displayNewQuote);
-        
-        // Display first quote
-        displayNewQuote();
-    </script>
+function start(){
+  document.getElementById("menu").style.display="none";
+  init();
+  started=true;
+}
+
+// Controls
+let keys={};
+document.addEventListener("keydown",e=>keys[e.key]=true);
+document.addEventListener("keyup",e=>keys[e.key]=false);
+
+function update(){
+  if(!started || gameOver) return;
+
+  // Move
+  if(keys["ArrowLeft"]) player.x-=5;
+  if(keys["ArrowRight"]) player.x+=5;
+
+  // Wrap
+  if(player.x<0) player.x=360;
+  if(player.x>360) player.x=0;
+
+  // Gravity
+  player.dy+=0.35;
+  player.y+=player.dy;
+
+  // Platform bounce
+  if(player.dy>0){
+    plats.forEach(p=>{
+      if(player.x<p.x+70 && player.x+40>p.x &&
+         player.y+40<p.y+10 &&
+         player.y+40+player.dy>=p.y){
+        player.dy = -10 - upgrades.jump;
+      }
+    });
+  }
+
+  // Scroll
+  if(player.y<280){
+    let speed=4+score/200;
+    plats.forEach(p=>p.y+=speed);
+    obs.forEach(o=>o.y+=speed);
+    power.forEach(p=>p.y+=speed);
+
+    player.y=280;
+    score++;
+
+    // Passive income
+    money += income;
+  }
+
+  // Respawn platforms
+  plats.forEach(p=>{
+    if(p.y>600){
+      p.y=-10;
+      p.x=Math.random()*320;
+    }
+  });
+
+  // Obstacles scale
+  if(Math.random()<0.01 + score/50000){
+    obs.push({x:Math.random()*380,y:-20});
+  }
+  obs.forEach(o=>o.y+=2+score/400);
+
+  // Powerups
+  if(Math.random()<0.02){
+    power.push({x:Math.random()*380,y:-20,type:Math.random()});
+  }
+  power.forEach(p=>p.y+=3);
+
+  // Collisions
+  obs.forEach(o=>{
+    if(player.x<o.x+20 && player.x+40>o.x &&
+       player.y<o.y+20 && player.y+40>o.y){
+      gameOver=true;
+    }
+  });
+
+  power.forEach(p=>{
+    if(player.x<p.x+20 && player.x+40>p.x &&
+       player.y<p.y+20 && player.y+40>p.y){
+      if(p.type<0.5) player.dy=-18;
+      else money+=500;
+    }
+  });
+
+  // Missions
+  if(score>200 && mission==="Reach 200 height"){
+    mission="Own 3 properties";
+    money+=1000;
+  }
+
+  if(ownedProps>=3 && mission==="Own 3 properties"){
+    mission="Reach 600 (Palace)";
+    money+=2000;
+  }
+
+  // Win
+  if(score>600){
+    document.getElementById("win").style.display="block";
+    gameOver=true;
+  }
+
+  // Save
+  localStorage.setItem("realtySave",JSON.stringify({
+    money, income, upgrades, props:ownedProps, mission
+  }));
+
+  updateUI();
+}
+
+// BUY SYSTEM
+function buyProperty(){
+  if(money>=500){
+    money-=500;
+    income+=2;
+    ownedProps++;
+  }
+}
+
+function upgradeJump(){
+  if(money>=300){
+    money-=300;
+    upgrades.jump++;
+  }
+}
+
+function upgradeIncome(){
+  if(money>=400){
+    money-=400;
+    income+=1;
+  }
+}
+
+// UI
+function updateUI(){
+  document.getElementById("ui").innerHTML = `
+  🏆 Height: ${score}<br>
+  💰 Money: $${money}<br>
+  📈 Income: $${income}/tick<br>
+  🏠 Properties: ${ownedProps}<br>
+  🎯 Mission: ${mission}<br><br>
+
+  <button onclick="buyProperty()">Buy Property ($500)</button><br>
+  <button onclick="upgradeJump()">Upgrade Jump ($300)</button><br>
+  <button onclick="upgradeIncome()">Upgrade Income ($400)</button>
+  `;
+}
+
+// Draw
+function draw(){
+  ctx.clearRect(0,0,400,600);
+
+  if(!started) return;
+
+  // Platforms
+  ctx.fillStyle="green";
+  plats.forEach(p=>{
+    ctx.fillRect(p.x,p.y,60,10);
+  });
+
+  // Player
+  ctx.fillStyle="orange";
+  ctx.fillRect(player.x,player.y,40,40);
+
+  // Obstacles
+  ctx.fillStyle="red";
+  obs.forEach(o=>{
+    ctx.fillRect(o.x,o.y,20,20);
+  });
+
+  // Powerups
+  ctx.fillStyle="gold";
+  power.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,10,0,Math.PI*2);
+    ctx.fill();
+  });
+
+  if(gameOver){
+    ctx.fillStyle="black";
+    ctx.fillText("Game Over",150,300);
+  }
+}
+
+function loop(){
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+
 </body>
 </html>
